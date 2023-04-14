@@ -52,17 +52,20 @@ const NewsHeadlines: React.FC<Props> = () => {
   }, [location]);
 
   return (
-    <div className="max-w-3xl mx-auto mt-24">
-      {!location && <p className="text-center mt-8">Trwa pobieranie lokalizacji...</p>}
+    <>
+    <div className="max-w-2xl xl:max-w-3xl mx-auto mt-12 md:mt-24">
+    <h1 className="text-cyan-400 text-center text-xl md:text-3xl">Welcome to NewsApp!</h1>
+      
+      {!location && <p className="text-center mt-8">Downloading location...</p>}
 
-      {isLoading && <p className="text-center mt-8">Ładowanie...</p>}
+      {isLoading && <p className="text-center mt-8">Loading...</p>}
 
       {articles.length > 0 ? (
         <>
-          <h2 className="text-2xl font-bold mt-8 mb-8 text-center">Top Headlines</h2>
+          <h2 className="text-2xl font-bold mt-8 mb-8 text-center text-cyan-400">Top Headlines</h2>
           <ul>
             {articles.map((article) => (
-              <li key={article.url} className="mb-6 bg-gray-300 rounded-xl">
+              <li key={article.url} className="mb-6 bg-white shadow-lg rounded-xl">
                 <a href={article.url} target="_blank" rel="noopener noreferrer">
                   <div className="grid md:flex items-center justify-center mb-2">
                     {article.urlToImage && (
@@ -70,8 +73,8 @@ const NewsHeadlines: React.FC<Props> = () => {
                     )}
                     <div className="flex flex-col justify-between px-2">
                       <div>
-                        <h3 className="text-lg md:text-2xl font-bold mb-2 mt-2">{article.title}</h3>
-                        <p className="text-gray-600 text-sm md:text-lg">{article.description}</p>
+                        <h3 className="text-lg md:text-xl xl:text-2xl font-bold mb-2 mt-2 text-gray-400">{article.title}</h3>
+                        <p className="text-gray-600 text-sm xl:text-lg">{article.description}</p>
                       </div>
                       <p className="text-sm md:text-lg text-gray-400 mt-2 pb-3">{new Date(article.publishedAt).toLocaleDateString()}</p>
                     </div>
@@ -82,10 +85,11 @@ const NewsHeadlines: React.FC<Props> = () => {
           </ul>
         </>
       ) : (
-        location && !isLoading && <p className="text-center mt-8">Brak artykułów do wyświetlenia.</p>
+        location && !isLoading && <p className="text-center mt-8">There are no articles to display.</p>
         )}
       </div>
+      </>
     );
-}
+};
 
 export default NewsHeadlines;

@@ -48,23 +48,26 @@ const WeatherCard: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-56 h-24 bg-gray-200 rounded-xl flex items-center justify-center text-center mx-auto text-cyan-500 mt-16">
+    <div>
+    <h1 className="text-cyan-400 text-center text-lg md:text-2xl xl:text-3xl mt-12 md:mt-16 mb-2 md:mb-6">Your local weather</h1>
+    <div className="w-56 h-20 bg-white shadow-lg rounded-lg flex items-center justify-center text-center mx-auto text-cyan-500">
       {weatherData ? (
         <>
           <div className="flex-grow">
           <Link href="/LocalWeather">
             <div className="text-lg font-medium">{location}</div>
             </Link>
-              <div className="text-3xl font-bold">{weatherData.main.temp}&deg;C</div>
+            <div className="text-3xl font-bold">{Math.round(weatherData.main.temp)}&deg;C</div>
             </div>
           <img
-            src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
+            src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
             alt={weatherData.weather[0].main}
             className="h-20"/>
         </>
       ) : (
-        <div>Ładowanie...</div>
+        <div>Loading...</div>
       )}
+    </div>
     </div>
   );
 };

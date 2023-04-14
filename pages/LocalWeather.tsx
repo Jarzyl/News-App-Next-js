@@ -69,11 +69,12 @@ const WeatherCard: React.FC = () => {
         <link rel="icon" type="image/jpg" href="logo.png" />
       </Head>
       <NavBar/>
-    <div className="w-full h-screen bg-white rounded-md grid md:flex items-center justify-center text-center mx-auto">
+    <div className="w-full h-screen bg-white rounded-md grid items-center justify-center text-center mx-auto">
+      <h1 className="text-cyan-500 text-center text-xl md:text-3xl">Check your local weather!</h1>
       {weatherData ? (
         <>
             <div className="items-center justify-center">
-              <div className='bg-gray-200 w-full h-80 m-2 relative p-8 rounded-lg text-cyan-400'>
+              <div className='bg-white shadow-lg w-full h-full md:h-80 relative p-8 rounded-lg text-cyan-400'>
         <p className='text-2xl text-center font-bold pb-10'>Weather in {weatherData.name}</p>
         <div className="flex justify-center pb-10">
         <img

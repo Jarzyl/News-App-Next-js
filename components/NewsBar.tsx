@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 
-const NavBar = () => {
+const NewsBar = () => {
   const [nav, setNav] = useState(false);
 
   const handleNav = () => {
@@ -13,21 +13,21 @@ const NavBar = () => {
     <div className="w-full shadow-md shadow-gray-200 bg-white dark:shadow-teal-500 dark:bg-white fixed top-0 left-0 right-0 z-10 h-10 xl:h-12">
       <div className="text-cyan-400 dark:text-teal-500 justify-end md:justify-center flex px-4 mr-5 mx-auto lg:max-w-7xl xl:max-w-full md:items-center md:px-8 h-10">
         <div>
-          <ul className='hidden text-lg xl:text-2xl md:flex xl:flex xl:mt-2 xl:mr-10'>
+        <ul className='hidden text-lg xl:text-2xl md:flex xl:flex xl:mt-2 xl:mr-10'>
             <li className='ml-10 hover:scale-105 duration-200'>
             <Link href='/MainPage'>Home</Link>
             </li>
             <li className='ml-10 hover:scale-105 duration-200'>
-            <Link href='/News/NewsPage'>News</Link>
+            <Link href='/News/BusinessPage'>Business</Link>
             </li>
             <li className='ml-10 hover:scale-105 duration-200'>
-            <Link href='/WeatherPage'>Weather</Link>
+            <Link href='/News/HealthPage'>Health</Link>
             </li>
             <li className='ml-10 hover:scale-105 duration-200'>
-            <Link href='/CryptoPage'>Crypto</Link>
+            <Link href='/News/SportPage'>Sport</Link>
             </li>
             <li className='ml-10 hover:scale-105 duration-200'>
-            <Link href=''>Currency</Link>
+            <Link href='/News/TechnologyPage'>Technology</Link>
             </li>
           </ul>
 
@@ -53,20 +53,20 @@ const NavBar = () => {
           </div>
           <div className='py-3 flex flex-col text-center'>
             <ul className='uppercase text-cyan-400 text-lg'>
-              <li onClick={() => setNav(false)} className='py-4'>
+            <li onClick={() => setNav(false)} className='py-4'>
               <Link href='/MainPage'>Home</Link>
               </li>
               <li onClick={() => setNav(false)} className='py-4'>
-              <Link href='/News/NewsPage'>News</Link>
+              <Link href='/News/BusinessPage'>Business</Link>
               </li>
               <li onClick={() => setNav(false)} className='py-4'>
-              <Link href='/WeatherPage'>Weather</Link>
+              <Link href='/News/HealthPage'>Health</Link>
               </li>
               <li onClick={() => setNav(false)} className='py-4'>
-              <Link href='/CryptoPage'>Crypto</Link>
+              <Link href='/News/SportPage'>Sport</Link>
               </li>
               <li onClick={() => setNav(false)} className='py-4'>
-              <Link href=''>Currency</Link>
+              <Link href='/News/TechnologyPage'>Technology</Link>
               </li>
             </ul>
           </div>
@@ -76,4 +76,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default NewsBar;

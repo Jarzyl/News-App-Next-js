@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import CoinItem from '@/components/CoinItem'
+import CoinItem from '@/components/CryptoItem'
 import Head from "next/head";
 import NavBar from "@/components/NavBar";
 
@@ -22,7 +22,7 @@ const CoinsList: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false"
+        "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=15&page=1&sparkline=false"
       );
       setCoins(response.data);
     };
@@ -39,9 +39,9 @@ const CoinsList: React.FC = () => {
 
     </Head>
     <NavBar/>
-    <div className="mx-auto mt-12 md:mt-20">
-      <h1 className="text-lg md:text-3xl mb-3 text-center">Follow cryptocurrency quotes - the latest market data</h1>
-      <h2 className="text-lg md:text-3xl mb-6 text-center">Top 10 Cryptocurrencies by Market Cap</h2>
+    <div className="mx-auto mt-16 md:mt-20">
+      <h1 className="text-lg md:text-3xl mb-3 text-center text-cyan-400">Follow cryptocurrency quotes - the latest market data!</h1>
+      <h2 className="text-lg md:text-3xl mb-6 text-center text-cyan-400">Top 15 Cryptocurrencies by Market Cap</h2>
       <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 items-center justify-center md:ml-24 md:mr-24 lg:ml-36 lg:mr-36">
         {coins.map((coin) => (
           <CoinItem key={coin.id} coin={coin} />

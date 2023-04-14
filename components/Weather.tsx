@@ -1,6 +1,4 @@
-import Image from 'next/image';
 import React from 'react';
-
 interface WeatherData {
   name: string;
   main: {
@@ -28,13 +26,13 @@ interface Props {
 const Weather: React.FC<Props> = ({ data }) => {
   console.log(data);
   return (
-    <div className='relative flex flex-col justify-between max-w-[500px] w-full h-full m-auto z-10'>
+    <div className='relative flex flex-col justify-between max-w-[500px] w-full h-full m-auto'>
       {/* Top */}
       <div className='relative flex justify-between pt-12 text-cyan-300'>
         <div className='flex flex-col items-center '>
           <img
-          src={data.weather && data.weather[0] && data.weather[0].icon ? `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png` : ''}         
-          alt=''
+            src={data.weather && data.weather[0] && data.weather[0].icon ? `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png` : ''}         
+            alt='weathericon'
             width='130'
             height='130'
           />
@@ -44,7 +42,7 @@ const Weather: React.FC<Props> = ({ data }) => {
 
       {/* Bottom */}
 
-      <div className='bg-gray-100 m-2 relative p-4 rounded-lg text-cyan-300 xl:mt-20'>
+      <div className='bg-white shadow-lg m-2 relative p-4 rounded-lg text-cyan-300 xl:mt-20'>
         <p className='text-2xl text-center font-bold pb-6'>Weather in {data.name}</p>
         <div className='grid grid-cols-3 md:grid-cols-5 gap-2 justify-between text-center'>
           <div>

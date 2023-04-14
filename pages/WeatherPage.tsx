@@ -5,45 +5,29 @@ import { BsSearch } from 'react-icons/bs';
 import Weather from '../components/Weather';
 import NavBar from '@/components/NavBar';
 
-type WeatherData = {
-  name: string;
-  main: {
-    temp: number;
-    feels_like: number;
-    humidity: number;
-    pressure: number;
-  };
-  weather: {
-    icon: string;
-    main: string;
-  }[];
-  wind: {
-    speed: number;
-  };
-  sys: {
-    country: string;
-  };
-};
+// type WeatherData = {
+//   name: string;
+//   main: {
+//     temp: number;
+//     feels_like: number;
+//     humidity: number;
+//     pressure: number;
+//   };
+//   weather: {
+//     icon: string;
+//     main: string;
+//   }[];
+//   wind: {
+//     speed: number;
+//   };
+//   sys: {
+//     country: string;
+//   };
+// };
 
 export default function Home(): JSX.Element {
   const [city, setCity] = useState<string>('');
-  const [weather, setWeather] = useState<WeatherData>({
-    main: {
-      temp: 0,
-      feels_like: 0,
-      humidity: 0,
-      pressure: 0,
-    },
-    name: '',
-    weather: [],
-    wind: {
-      speed: 0,
-    },
-    sys: {
-      country: '',
-    },
-  });
-  
+  const [weather, setWeather] = useState(null);
   const [error, setError] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -85,32 +69,30 @@ export default function Home(): JSX.Element {
         <link rel="icon" type="image/jpg" href="logo.png" />
       </Head>
       <NavBar/>
-      {/* Search */}
+      <h1 className="text-cyan-400 text-center text-xl md:text-3xl mt-16">Check the weather in any location!</h1>
 
-      <div className="relative flex justify-between items-center max-w-[500px] w-full m-auto text-black z-10 mt-16">
-        <form
-          onSubmit={handleSubmit}
-          className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 text-black rounded-2xl"
-        >
+      {/* Search */}
+      <div className="relative flex justify-between items-center max-w-[500px] w-full m-auto mt-16">
+        <form onSubmit={handleSubmit} className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 rounded-2xl">
           <div>
             <input
               onChange={(e) => setCity(e.target.value)}
               ref={inputRef} // add a ref to the input field
-              className="bg-transparent border-none text-cyan-400 focus:outline-none text-2xl "
+              className="bg-transparent border-none focus:outline-none text-2xl text-gray-400"
               type="text"
               placeholder="Search city"
             />
             {error && <p className="text-red-500">{error}</p>}
           </div>
           <button onClick={handleSubmit}>
-            <BsSearch size={20} className="search-icon" />
+            <BsSearch size={20} className="search-icon text-gray-400" />
           </button>
         </form>
       </div>
 
       {/* Weather data display */}
 
-      {weather.main && <Weather data={weather} />}
+      {weather && <Weather data={weather} />}
 
     </div>
   );

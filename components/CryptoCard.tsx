@@ -9,7 +9,7 @@ type Currency = {
   current_price: number;
 };
 
-const CryptoPrices: React.FC = () => {
+const CryptoCard: React.FC = () => {
   const [currencies, setCurrencies] = useState<Currency[]>([]);
 
   useEffect(() => {
@@ -27,8 +27,10 @@ const CryptoPrices: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-72 h-64 bg-gray-200 rounded-md grid md:flex items-center justify-center text-center mx-auto mt-16">
-      <ul className="text-white text-lg">
+    <div>
+    <h1 className="text-cyan-400 text-center text-lg md:text-2xl xl:text-3xl mt-16 mb-6">Top 5 cryptocurrencies</h1>
+    <div className="w-72 h-64 bg-white rounded-lg shadow-lg md:flex items-center justify-center text-center mx-auto">
+      <ul className="text-cyan-500 text-lg">
         {currencies.map((currency) => (
           <li key={currency.id} className="flex items-center justify-center p-2">
             <img src={currency.image} alt={currency.name} className="w-8 h-8 mr-2" />
@@ -38,7 +40,8 @@ const CryptoPrices: React.FC = () => {
         ))}
       </ul>
     </div>
+    </div>
   );
 };
 
-export default CryptoPrices;
+export default CryptoCard;
