@@ -43,5 +43,6 @@ const CryptoItem: React.FC<Props> = ({ coin }) => {
       </div>
     </div>
   );
-}
+};
+
 export default CryptoItem;

@@ -1,9 +1,9 @@
 import React from 'react';
 import Head from "next/head";
-import NewsAuto from '@/components/NewsAuto';
-import WeatherCard from "@/components/WeatherCard";
-import CryptoCard from "@/components/CryptoCard";
-import NavBar from "@/components/NavBar";
+import WeatherCard from "@/components/Weather/WeatherCard";
+import CryptoCard from "@/components/Crypto/CryptoCard";
+import NavBar from "@/components/Navbars/NavBar";
+import NewsSection from '@/components/News/NewsSection'
 
 type Props = {}
 
@@ -18,7 +18,7 @@ export default function MainPage({}: Props) {
         <main className="px-6 grid gap-3 md:flex">
         <NavBar/>
         <WeatherCard/>
-        <NewsAuto/>
+        <NewsSection/>
         <CryptoCard/>
       </main>
     </>

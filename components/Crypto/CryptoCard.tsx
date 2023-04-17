@@ -28,12 +28,12 @@ const CryptoCard: React.FC = () => {
 
   return (
     <div>
-    <h1 className="text-cyan-400 text-center text-lg md:text-2xl xl:text-3xl mt-16 mb-6">Top 5 cryptocurrencies</h1>
-    <div className="w-72 h-64 bg-white rounded-lg shadow-lg md:flex items-center justify-center text-center mx-auto">
+    <h1 className="text-teal-500 text-center text-lg md:text-2xl xl:text-3xl md:mt-16 mb-6">Top 5 cryptocurrencies</h1>
+    <div className="w-72 h-64 bg-white rounded-lg shadow-lg md:flex items-center justify-center text-center mx-auto mb-6">
       <ul className="text-cyan-500 text-lg">
         {currencies.map((currency) => (
           <li key={currency.id} className="flex items-center justify-center p-2">
-            <img src={currency.image} alt={currency.name} className="w-8 h-8 mr-2" />
+            <img src={currency.image} alt={currency.name} className="w-8 h-8 mr-2"/>
             <span className="mr-2">{currency.symbol.toUpperCase()}</span>
             <span>{currency.current_price.toFixed(2)} USD</span>
           </li>

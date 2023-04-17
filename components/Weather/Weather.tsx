@@ -1,4 +1,5 @@
 import React from 'react';
+
 interface WeatherData {
   name: string;
   main: {
@@ -24,7 +25,6 @@ interface Props {
 }
 
 const Weather: React.FC<Props> = ({ data }) => {
-  console.log(data);
   return (
     <div className='relative flex flex-col justify-between max-w-[500px] w-full h-full m-auto'>
       {/* Top */}

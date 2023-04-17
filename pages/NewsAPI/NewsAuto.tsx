@@ -41,6 +41,7 @@ const NewsHeadlines: React.FC<Props> = () => {
           const countryCode = response.data.countryCode;
           const apiUrl = `https://newsapi.org/v2/top-headlines?country=${countryCode}&apiKey=${process.env.NEXT_PUBLIC_NEWS_KEY_1}&pageSize=10`;
           const articlesResponse = await axios.get(apiUrl);
+          console.log(articlesResponse.data.articles)
           setArticles(articlesResponse.data.articles);
         } catch (error) {
           console.error(error);

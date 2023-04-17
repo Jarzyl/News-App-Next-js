@@ -1,31 +1,11 @@
+import React, { useState, useRef, FormEvent } from 'react';
 import Head from 'next/head';
 import axios from 'axios';
-import React, { useState, useRef, FormEvent, MouseEvent } from 'react';
+import Weather from '../components/Weather/Weather';
+import NavBar from '@/components/Navbars/NavBar';
 import { BsSearch } from 'react-icons/bs';
-import Weather from '../components/Weather';
-import NavBar from '@/components/NavBar';
 
-// type WeatherData = {
-//   name: string;
-//   main: {
-//     temp: number;
-//     feels_like: number;
-//     humidity: number;
-//     pressure: number;
-//   };
-//   weather: {
-//     icon: string;
-//     main: string;
-//   }[];
-//   wind: {
-//     speed: number;
-//   };
-//   sys: {
-//     country: string;
-//   };
-// };
-
-export default function Home(): JSX.Element {
+export default function WeatherPage(): JSX.Element {
   const [city, setCity] = useState<string>('');
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState<string>('');
@@ -92,8 +72,7 @@ export default function Home(): JSX.Element {
 
       {/* Weather data display */}
 
-      {weather && <Weather data={weather} />}
-
+      {weather && <Weather data={weather}/>}
     </div>
   );
 };

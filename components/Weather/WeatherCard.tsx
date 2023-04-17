@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { WiDaySunny } from "react-icons/wi"; // przykładowa ikona pogody
 import Link from "next/link";
 
 type WeatherData = {
@@ -18,7 +17,7 @@ const WeatherCard: React.FC = () => {
   const [location, setLocation] = useState<string>("");
 
   useEffect(() => {
-    // funkcja pobierająca aktualną lokalizację użytkownika
+    // a function that retrieves the user's current location
     const getLocation = () => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -49,7 +48,7 @@ const WeatherCard: React.FC = () => {
 
   return (
     <div>
-    <h1 className="text-cyan-400 text-center text-lg md:text-2xl xl:text-3xl mt-12 md:mt-16 mb-2 md:mb-6">Your local weather</h1>
+    <h1 className="text-teal-500 text-center text-lg md:text-2xl xl:text-3xl mt-12 md:mt-16 mb-2 md:mb-6">Your local weather</h1>
     <div className="w-56 h-20 bg-white shadow-lg rounded-lg flex items-center justify-center text-center mx-auto text-cyan-500">
       {weatherData ? (
         <>
