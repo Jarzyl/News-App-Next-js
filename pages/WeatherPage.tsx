@@ -52,20 +52,20 @@ export default function WeatherPage(): JSX.Element {
       <h1 className="text-cyan-400 text-center text-xl md:text-3xl mt-16">Check the weather in any location!</h1>
 
       {/* Search */}
-      <div className="relative flex justify-between items-center max-w-[500px] w-full m-auto mt-16">
+      <div className="relative flex justify-between items-center max-w-[300px] md:max-w-[500px] w-full m-auto mt-16">
         <form onSubmit={handleSubmit} className="flex justify-between items-center w-full m-auto p-3 bg-transparent border border-gray-300 rounded-2xl">
           <div>
             <input
               onChange={(e) => setCity(e.target.value)}
               ref={inputRef} // add a ref to the input field
-              className="bg-transparent border-none focus:outline-none text-2xl text-gray-400"
+              className="bg-transparent border-none focus:outline-none text-2xl text-gray-400 w-40 md:w-full"
               type="text"
               placeholder="Search city"
             />
             {error && <p className="text-red-500">{error}</p>}
           </div>
           <button onClick={handleSubmit}>
-            <BsSearch size={20} className="search-icon text-gray-400" />
+            <BsSearch size={20} className="text-gray-400"/>
           </button>
         </form>
       </div>
