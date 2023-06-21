@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Head from "next/head";
-import NewsBar from "@/components/Navbars/NewsBar";
+import NewsBar from "@/components/Layout/Navbars/NewsBar";
 
 type Props = {};
 

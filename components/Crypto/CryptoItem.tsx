@@ -1,5 +1,3 @@
-import React from "react";
-
 interface Props {
   coin: {
     id: string;
@@ -12,7 +10,7 @@ interface Props {
     market_cap: number;
     market_cap_rank: number;
   };
-}
+};
 
 const CryptoItem: React.FC<Props> = ({ coin }) => {
   return (

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Head from "next/head";
-import NavBar from "@/components/Navbars/NavBar";
+import NavBar from "@/components/Layout/Navbars/NavBar";
+import Image from "next/image";
 
 type WeatherData = {
     name: string;
@@ -25,7 +26,7 @@ type WeatherData = {
 
 const LocalWeather: React.FC = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
-  const [location, setLocation] = useState<string>("");
+  const [, setLocation] = useState<string>("");
 
   useEffect(() => {
     // a function that retrieves the user's current location
@@ -68,16 +69,17 @@ const LocalWeather: React.FC = () => {
       <NavBar/>
     <div className="w-full h-screen bg-white rounded-md grid items-center justify-center text-center mx-auto">
       <h1 className="text-cyan-500 text-center text-xl md:text-3xl">Check your local weather!</h1>
-      {weatherData ? (
-        <>
-            <div className="items-center justify-center">
+      {weatherData ? ( <>
+          <div className="items-center justify-center">
               <div className='bg-white shadow-lg w-full h-full md:h-80 relative p-8 rounded-lg text-cyan-400'>
         <p className='text-2xl text-center font-bold pb-10'>Weather in {weatherData.name}</p>
         <div className="flex justify-center pb-10">
-        <img
+        <Image
             src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`}
             alt={weatherData.weather[0].main}
             className="h-20"
+            width={80}
+            height={30}
           />
         <div className="text-4xl font-bold">{weatherData.main.temp}&deg;C</div>
         </div>
@@ -91,24 +93,22 @@ const LocalWeather: React.FC = () => {
             <p className='text-xl'>Humidity</p>
           </div>
           <div>
-            <p className='font-bold text-xl pb-4'>{weatherData.wind.speed.toFixed(0)} KM/H</p>
+            <p className='font-bold text-xl pb-4'>{weatherData.wind.speed.toFixed(0)}KM/H</p>
             <p className='text-xl'>Winds</p>
           </div>
           <div>
-            <p className='font-bold text-xl pb-4'>{weatherData.main.pressure} </p>
+            <p className='font-bold text-xl pb-4'>{weatherData.main.pressure}</p>
             <p className='text-xl'>Pressure</p>
           </div>
           <div>
-            <p className='font-bold text-xl pb-4'>{weatherData.sys.country} </p>
+            <p className='font-bold text-xl pb-4'>{weatherData.sys.country}</p>
             <p className='text-xl'>Country</p>
           </div>
         </div>
       </div>
     </div> 
       </>
-      ) : (
-        <div>Ładowanie...</div>
-      )}
+      ) : ( <div>Loading...</div>)}
     </div>
     </>
   );

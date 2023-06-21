@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import NewsBar from "@/components/Navbars/NewsBar";
+import NewsBar from "@/components/Layout/Navbars/NewsBar";
 import { ArticleData } from "@/components/News/types";
 
 function Article({ article }: { article: ArticleData }) {

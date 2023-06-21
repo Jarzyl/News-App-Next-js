@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import { toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 type Currency = {
   id: string;
@@ -20,7 +22,20 @@ const CryptoCard: React.FC = () => {
         );
         setCurrencies(response.data);
       } catch (error) {
-        console.error(error);
+        toast.error(
+          <div className="flex justify-center">
+            <span className="text-red-500">An error occurred while downloading data</span>
+          </div>,
+          {
+            position: 'top-center',
+            autoClose: 1500,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          }
+        );
       }
     };
     fetchData();
