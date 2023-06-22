@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
+import Image from "next/image";
+import { HiOutlineExternalLink } from 'react-icons/hi'
 
 type WeatherData = {
   weather: {
@@ -17,55 +19,53 @@ const WeatherCard: React.FC = () => {
   const [location, setLocation] = useState<string>("");
 
   useEffect(() => {
-    // a function that retrieves the user's current location
-    const getLocation = () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const { latitude, longitude } = position.coords;
-            axios
-              .get(
-                `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}&units=metric`
-              )
-              .then((response) => {
-                setWeatherData(response.data);
-                setLocation(response.data.name);
-              })
-              .catch((error) => {
-                console.error(error);
-              });
-          },
-          (error) => {
-            console.error(error);
-          }
-        );
-      } else {
-        console.error("Geolocation is not supported by this browser.");
+    const getLocation = async () => {
+      try {
+        if (navigator.geolocation) {
+          const position = await new Promise<GeolocationPosition>((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+          });
+
+          const { latitude, longitude } = position.coords;
+
+          const response = await axios.get(
+            `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}&units=metric`
+          );
+
+          setWeatherData(response.data);
+          setLocation(response.data.name);
+        } else {
+          throw new Error("Geolocation is not supported by this browser.");
+        }
+      } catch (error) {
+        console.error("An error occurred while fetching weather data:", error);
       }
     };
+
     getLocation();
   }, []);
 
   return (
     <div>
-    <h1 className="text-teal-500 text-center text-lg md:text-2xl xl:text-3xl mt-12 md:mt-16 mb-2 md:mb-6">Your local weather</h1>
-    <div className="w-56 h-20 bg-white shadow-lg rounded-lg flex items-center justify-center text-center mx-auto text-cyan-500">
+    <div className="flex items-center justify-center text-center mx-auto text-gray-500">
       {weatherData ? (
         <>
-          <div className="flex-grow">
-          <Link href="/LocalWeather">
-            <div className="text-lg font-medium">{location}</div>
+          <div className="flex">
+          <Link href="/LocalWeather" className="flex mt-3">
+            <HiOutlineExternalLink size={25}/>
+            <p className="font-semibold">Full forecast</p>
             </Link>
-            <div className="text-3xl font-bold">{Math.round(weatherData.main.temp)}&deg;C</div>
-            </div>
-          <img
+          <Image
             src={`http://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`}
             alt={weatherData.weather[0].main}
-            className="h-20"/>
+            width={70}
+            height={30}
+            className="mr-3 h-16"/>
+            <div className="text-3xl font-bold text-black mt-1">{Math.round(weatherData.main.temp)}&deg;C</div>
+            <div className="text-lg font-medium ml-3 mt-3">{location}</div>
+            </div>
         </>
-      ) : (
-        <div>Loading...</div>
-      )}
+      ) : ( <div>Loading...</div>)}
     </div>
     </div>
   );

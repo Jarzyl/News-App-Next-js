@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { BsSearch } from 'react-icons/bs';
+import Image from 'next/image';
+import logo from '../../../public/logo.png'
 
 const NavBar = () => {
   const [nav, setNav] = useState(false);
 
   const handleNav = () => {
-    setNav(!nav);
+    setNav(prev => !prev);
   };
 
   return (
-    <div className="w-full shadow-md shadow-gray-200 bg-white fixed top-0 left-0 right-0 z-10 h-10 xl:h-12">
-      <div className="text-teal-500 justify-end md:justify-center flex px-4 mr-5 mx-auto lg:max-w-7xl xl:max-w-full md:items-center md:px-8 h-10">
+    <nav className="sticky top-0 bg-white p-5 md:p-6 w-full flex justify-end md:justify-center items-center text-gray-400 h-16 z-50 max-w-7xl mx-auto">
+        <Link href='/' className="flex-1">
+      <Image src={logo} alt="logo" width={50} height={50}/>
+  </Link>
         <div>
-          <ul className='hidden text-lg xl:text-2xl md:flex xl:flex xl:mt-2 xl:mr-10'>
+          <ul className='hidden text-lg xl:text-2xl md:flex justify-center items-center'>
             <li className='ml-10 hover:scale-105 duration-200'>
             <Link href='/MainPage'>Home</Link>
             </li>
@@ -27,12 +32,25 @@ const NavBar = () => {
             <Link href='/CryptoPage'>Crypto</Link>
             </li>
           </ul>
+          
 
           {/* Hamburger Icon */}
           <div className='md:hidden mt-1.5 ml-auto hover:scale-105 duration-200' onClick={handleNav}><AiOutlineMenu size={25}/>
           </div>
           </div>
+
+          <div className="ml-10">
+      <form className="hidden md:flex items-center justify-center border border-gray-300 rounded-2xl p-1.5 focus:outline-none text-xl text-gray-400">
+        <BsSearch className='mr-6 text-black'size={25}/>
+        <input type="text" placeholder="Search Infomer..."
+          className=""/>
+      </form>
+    </div>
+         <div className="ml-10 hidden md:flex items-center justify-center">
+          <button type="submit" className="bg-sky-600 hover:bg-sky-400 text-white font-bold py-2 px-4 rounded mt-4 md:mt-0"
+          >Login</button>
         </div>
+
 
       {/* Mobile Menu */}
       {/* Overlay */}
@@ -66,7 +84,7 @@ const NavBar = () => {
           </div>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
