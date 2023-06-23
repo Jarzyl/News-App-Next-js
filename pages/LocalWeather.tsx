@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Head from "next/head";
-import NavBar from "@/components/Layout/Navbars/NavBar";
+import NavBar from "@/components/Layout/NavBar";
 import Image from "next/image";
 
 type WeatherData = {

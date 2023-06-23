@@ -2,7 +2,7 @@ import { useState, useRef, FormEvent } from 'react';
 import Head from 'next/head';
 import axios from 'axios';
 import Weather from '../components/Weather/Weather';
-import NavBar from '@/components/Layout/Navbars/NavBar';
+import NavBar from '@/components/Layout/NavBar';
 import { BsSearch } from 'react-icons/bs';
 
 export default function WeatherPage(): JSX.Element {

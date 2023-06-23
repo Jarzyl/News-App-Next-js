@@ -25,12 +25,12 @@ export default function Banner() {
         
     return (
         <>
-        <hr className="w-[270px] md:w-[650px] lg:w-[900px] xl:w-[1250px] mx-auto border" />
+        <hr className="w-[270px] md:w-[650px] lg:w-[900px] xl:w-[1250px] mx-auto border mt-1" />
         <div className="grid gap-3 lg:flex flex-row justify-center lg:justify-between font-bold px-5 mb-3 mt-1 text-center md:text-left">
         <div className='mr-6'>
             <h1 className="mt-5 md:mt-3 text-3xl lg:text-5xl">{' '}
             <span className="relative inline-block">
-                <span className="absolute bottom-0.5 left-0.5 w-full h-3 bg-sky-600"></span>
+                <span className="absolute bottom-0.5 left-0.5 w-full h-2 md:h-3 bg-sky-600"></span>
                 <span className="relative z-10">HOT</span>
             </span>{' '} NEWS</h1>
         </div>

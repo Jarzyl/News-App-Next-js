@@ -9,7 +9,7 @@ interface Cart {
 
 export default function SmallCartv3({ photo, date, description }: Cart) {
   return (
-    <div className="grid w-[250px] md:w-[350px] h-[250px] mx-auto">
+    <div className="grid w-[250px] lg:w-[350px] h-[250px] mx-auto">
         <div className=""> 
         <Image src={photo} alt="news photo" width={250} height={250} className="object-cover"/>
         </div>

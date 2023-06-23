@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Head from "next/head";
 import CoinItem from '@/components/Crypto/CryptoItem';
-import NavBar from "@/components/Layout/Navbars/NavBar";
+import NavBar from "@/components/Layout/NavBar";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

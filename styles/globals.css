@@ -17,10 +17,15 @@ html {
   }
   
   ::-webkit-scrollbar-thumb {
-    background: #a5f3fc;
+    background: #38bdf8;
     border-radius: 3px;
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: #06b6d4;
+    background: #0ea5e9;
   }
+
+  body {
+    overflow-x: hidden;
+  }
+  
