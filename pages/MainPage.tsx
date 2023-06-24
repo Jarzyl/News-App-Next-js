@@ -8,7 +8,9 @@ import MostWatched from "@/components/HomePage/MostWatched";
 import FindUs from "@/components/HomePage/FindUs";
 import CustomHead from "@/components/Layout/CustomHead";
 
-export default function MainPage() {
+type Props = {};
+
+export default function MainPage({} : Props) {
   return (
     <>
       <CustomHead title="News App" icon="news.png" />
