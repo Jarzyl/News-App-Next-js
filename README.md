@@ -1,0 +1,1 @@
+This is a site that allows you to read News from the world. It also has subpages with weather information and cryptocurrency quotes.
