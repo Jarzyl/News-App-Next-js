@@ -18,7 +18,7 @@ interface Coin {
   market_cap_rank: number;
 }
 
-const CoinList: React.FC = () => {
+const CryptoPage: React.FC = () => {
   const [coins, setCoins] = useState<Coin[]>([]);
 
   useEffect(() => {
@@ -77,4 +77,4 @@ const CoinList: React.FC = () => {
   );
 };
 
-export default CoinList;
+export default CryptoPage;

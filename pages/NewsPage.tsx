@@ -34,7 +34,7 @@ function Article({ article }: { article: ArticleData }) {
   );
 }
 
-export default function News() {
+export default function NewsPage() {
   const [articleData, setArticleData] = useState<ArticleData[]>([]);
 
   useEffect(() => {
