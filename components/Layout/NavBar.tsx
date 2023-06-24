@@ -15,9 +15,9 @@ export default function NavBar() {
 
   const menuItems = [
     { href: "/", label: "Home" },
-    { href: "/newspage", label: "News" },
-    { href: "/weatherpage", label: "Weather" },
-    { href: "/cryptopage", label: "Crypto" },
+    { href: "newspage", label: "News" },
+    { href: "weatherpage", label: "Weather" },
+    { href: "cryptopage", label: "Crypto" },
   ];
 
   return (
