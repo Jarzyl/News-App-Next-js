@@ -24,7 +24,7 @@ export default function MostWatched() {
       <div className="grid md:flex gap-4 bg-white justify-center md:justify-start">
         <div className="w-[300px] md:w-[400px] xl:w-[700px] px-2">
           <div className="relative h-[300px] lg:h-[420px]">
-            <Image src={biden} alt="Article" fill className='object-cover pl-0 md:pl-1' />
+            <Image src={biden} alt="Article" fill className='object-cover pl-0 md:pl-1 rounded-lg' />
           </div>
           <div className="bg-white text-white text-base mt-3 flex rounded-xl justify-between w-[300px] xl:w-[660px] px-1">
             <div className='grid'>

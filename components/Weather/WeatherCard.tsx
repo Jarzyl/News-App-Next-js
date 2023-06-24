@@ -51,7 +51,7 @@ const WeatherCard: React.FC = () => {
       {weatherData ? (
         <>
           <div className="flex">
-          <Link href="/LocalWeather" className="flex mt-3">
+          <Link href="/localweather" className="flex mt-3">
             <HiOutlineExternalLink size={25}/>
             <p className="font-semibold">Full forecast</p>
             </Link>

@@ -26,7 +26,7 @@ interface Props {
 
 const Weather: React.FC<Props> = ({ data }) => {
   return (
-    <div className='relative flex flex-col justify-between max-w-[500px] w-full h-full m-auto'>
+    <div className='relative flex flex-col justify-between max-w-[500px] w-full h-full m-auto mb-16'>
       {/* Top */}
       <div className='relative flex justify-between pt-12 text-cyan-300'>
         <div className='flex flex-col items-center '>

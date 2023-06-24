@@ -15,9 +15,9 @@ export default function NavBar() {
 
   const menuItems = [
     { href: "/", label: "Home" },
-    { href: "/NewsPage", label: "News" },
-    { href: "/WeatherPage", label: "Weather" },
-    { href: "/CryptoPage", label: "Crypto" },
+    { href: "/newspage", label: "News" },
+    { href: "/weatherpage", label: "Weather" },
+    { href: "/cryptopage", label: "Crypto" },
   ];
 
   return (
@@ -95,4 +95,4 @@ export default function NavBar() {
       </div>
     </nav>
   );
-};
+}

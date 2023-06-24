@@ -28,7 +28,8 @@ export default function Footer() {
                   (item, index) => (
                     <p className="mb-2" key={index}>
                       <Link href="#!">{item}</Link>
-                    </p>)
+                    </p>
+                  )
                 )}
               </div>
             </div>
@@ -37,12 +38,11 @@ export default function Footer() {
                 News
               </p>
               <div className="text-sm xl:text-lg ml-0 md:ml-1">
-                {["Business", "Health", "Sports", "Tech"].map(
-                  (item, index) => (
-                    <p className="mb-2" key={index}>
-                      <Link href="#!">{item}</Link>
-                    </p>)
-                )}
+                {["Business", "Health", "Sports", "Tech"].map((item, index) => (
+                  <p className="mb-2" key={index}>
+                    <Link href="#!">{item}</Link>
+                  </p>
+                ))}
               </div>
             </div>
             <div className="text-slate-400">
@@ -51,7 +51,7 @@ export default function Footer() {
               </p>
               <p className="mb-4 text-sm xl:text-lg text-center md:text-left flex items-center justify-center md:justify-start">
                 1234 1st Ave
-                <br/>
+                <br />
                 Seattle, WA 98101
               </p>
               <p className="text-sm xl:text-lg flex items-center justify-center md:justify-start">
@@ -64,7 +64,8 @@ export default function Footer() {
                   to="top"
                   smooth={true}
                   duration={500}
-                  className="block">
+                  className="block"
+                >
                   <BsArrowUp size={25} className="text-white" />
                 </ScrollLink>
               </div>
@@ -83,4 +84,4 @@ export default function Footer() {
       </footer>
     </>
   );
-};
+}
