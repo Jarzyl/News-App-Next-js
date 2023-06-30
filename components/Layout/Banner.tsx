@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import WeatherCard from "@/components/Weather/WeatherCard";
+import WeatherCard from "@/components/Layout/WeatherCard";
 
 export default function Banner() {
   const [currentDate, setCurrentDate] = useState("");
