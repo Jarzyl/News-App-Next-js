@@ -12,7 +12,7 @@ const menuItems = [
 export default function Panel() {
   return (
     <>
-      <div className="hidden lg:grid justify-center w-[220px] h-[600px] border rounded-lg mx-auto lg:mx-0">
+      <div className="hidden lg:grid justify-center w-[220px] h-[615px] border rounded-lg mx-auto lg:mx-0">
         <div className="flex gap-3 mt-6 px-3">
           <FaCloudSun size={25} className="text-sky-600" />
           <p className="text-center text-xl text-black font-semibold">

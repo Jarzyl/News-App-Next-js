@@ -8,36 +8,78 @@ import WeeklyForecast from "@/components/Weather/Right/Forecast";
 import { BiLinkExternal } from "react-icons/bi";
 import Country from "@/components/Weather/Right/Country";
 import Panel from "@/components/Weather/Left/Panel";
-import Chart from "@/components/Weather/Center/Chart";
+import LineChart from "@/components/Weather/Center/Chart";
+import { toast } from "react-toastify";
 
 export default function WeatherPage(): JSX.Element {
   const [city, setCity] = useState<string>("");
   const [weather, setWeather] = useState(null);
-  const [error, setError] = useState<string>("");
-  const inputRef = useRef<HTMLInputElement>(null);
   const [searchCity, setSearchCity] = useState<string>("");
   const [showWeatherInterface, setShowWeatherInterface] =
-    useState<boolean>(false);
+  useState<boolean>(false);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const API_URL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.NEXT_PUBLIC_WEATHER_KEY}`;
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!city) {
-      setError("The field is empty. Please enter a city name.");
+      toast.error(
+        <div className="flex justify-center">
+          <span className="text-red-500">
+            The field is empty. Please enter a city name.
+          </span>
+        </div>,
+        {
+          position: "top-center",
+          autoClose: 1500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      );
       return;
     }
     if (!/^[a-zA-ZąćęłńóśźżĄĆĘŁŃÓŚŹŻ\s]+$/.test(city)) {
-      setError("Please enter a valid city name.");
+      toast.error(
+        <div className="flex justify-center">
+          <span className="text-red-500">Please enter a valid city name.</span>
+        </div>,
+        {
+          position: "top-center",
+          autoClose: 1500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      );
       return;
     }
     try {
       await fetchWeather();
-      setError("");
       setSearchCity(city);
       setShowWeatherInterface(true);
     } catch (error) {
-      setError("City not found. Please enter a valid city name.");
+      toast.error(
+        <div className="flex justify-center">
+          <span className="text-red-500">
+            City not found. Please enter a valid city name.
+          </span>
+        </div>,
+        {
+          position: "top-center",
+          autoClose: 1500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      );
     }
   };
 
@@ -47,11 +89,25 @@ export default function WeatherPage(): JSX.Element {
       setWeather(response.data);
       setCity("");
       if (inputRef.current) {
-        inputRef.current.value = ""; // clear input field
+        inputRef.current.value = "";
       }
-      console.log("Dane pogodowe:", response.data);
     } catch (error) {
-      throw new Error("An error occurred while fetching weather data.");
+      toast.error(
+        <div className="flex justify-center">
+          <span className="text-red-500">
+            An error occurred while fetching weather data.
+          </span>
+        </div>,
+        {
+          position: "top-center",
+          autoClose: 1500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }
+      );
     }
   };
 
@@ -60,7 +116,7 @@ export default function WeatherPage(): JSX.Element {
       <CustomHead title="News App | Weather" icon="wlogo.png" />
       <Layout>
         <div className="max-w-[330px] md:max-w-2xl lg:max-w-5xl xl:max-w-7xl mt-3 mb-4 md:mb-24 justify-center lg:justify-between grid lg:flex mx-auto gap-3 px-4">
-          {showWeatherInterface ? <Panel /> : null}
+          { weather && showWeatherInterface ? <Panel /> : null}
           <div className="grid max-w-[330px] md:max-w-[500px] xl:max-w-[700px] h-[400px] mx-auto md:mx-0">
             <div className="flex justify-center mx-auto">
               <div
@@ -70,7 +126,7 @@ export default function WeatherPage(): JSX.Element {
               >
                 <form
                   onSubmit={handleSubmit}
-                  className="flex justify-between items-center w-full m-auto p-2 bg-transparent border border-gray-300 mb-10 rounded-lg"
+                  className="flex justify-between items-center w-full m-auto p-2 bg-transparent border border-gray-300 mb-5 rounded-lg"
                 >
                   <div className="flex">
                     <button onClick={handleSubmit}>
@@ -83,33 +139,34 @@ export default function WeatherPage(): JSX.Element {
                       type="text"
                       placeholder="Search location here"
                     />
-                    {error && <p className="text-red-500">{error}</p>}
                   </div>
                 </form>
               </div>
             </div>
-            {showWeatherInterface ? (
+            {weather && showWeatherInterface ? (
               <>
-                <div className="text-sky-600 font-semibold text-md mb-5">
+                <div className="text-sky-600 font-semibold text-md">
                   <hr className="w-[330px] md:w-[520px] xl:w-[650px] mb-3" />
-                  <div className="flex justify-between">
+                  <div className="flex justify-between mb-3">
                     <p>Today overview</p>
                     <div className="flex items-center">
                       <p className="mr-3">More detail</p>
                       <BiLinkExternal size={20} />
                     </div>
                   </div>
+                  <div>
+                    {weather && <WeatherCart data={weather} />}
+                    <LineChart city={searchCity} />
+                  </div>
                 </div>
-                {weather && <WeatherCart data={weather} />}
-                <Chart />
               </>
             ) : null}
           </div>
           {showWeatherInterface && weather ? (
-            <div className="grid w-[300px] md:w-[350px] border rounded-lg h-[600px] mx-auto mt-36 md:mt-0">
+            <div className="grid w-[300px] md:w-[350px] border rounded-lg h-[480px] lg:h-[615px] mx-auto mt-96 md:mt-60 lg:mt-0">
               <Country data={weather} />
               <WeeklyForecast city={searchCity} />
-              <div className="h-[150px]"></div>
+              <div className="hidden lg:h-[150px]"></div>
             </div>
           ) : null}
         </div>

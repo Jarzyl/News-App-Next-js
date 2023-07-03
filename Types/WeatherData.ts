@@ -1,5 +1,7 @@
 export interface WeatherData {
   name: string;
+  dt: number;
+  dt_txt: string;
   main: {
     temp: number;
     humidity: number;
@@ -17,6 +19,4 @@ export interface WeatherData {
   sys: {
     country: string;
   };
-  dt: number;
-  dt_txt: string;
 }

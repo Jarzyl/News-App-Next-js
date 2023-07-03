@@ -52,7 +52,12 @@ export default function FullStory() {
             </p>
           </div>
           <div className="w-[350px] lg:w-[590px] relative h-[300px] lg:h-[420px] mx-auto md:mx-0">
-            <Image src={museum} alt="Article" fill className="object-cover rounded-lg" />
+            <Image
+              src={museum}
+              alt="Article"
+              fill
+              className="object-cover rounded-lg"
+            />
           </div>
         </div>
         <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-10 mt-6 md:mt-16 px-4">

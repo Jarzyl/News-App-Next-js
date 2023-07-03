@@ -59,7 +59,7 @@ export default function Footer() {
               </p>
             </div>
             <div className="flex justify-center md:justify-start mt-3 md:mt-6">
-              <div className="rounded-full w-10 h-10 flex items-center justify-center cursor-pointer bg-black/30">
+              <div className="rounded-full w-10 h-10 flex items-center justify-center cursor-pointer bg-black/30 hover:bg-sky-600">
                 <ScrollLink
                   to="top"
                   smooth={true}

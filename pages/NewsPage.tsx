@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ArticleData } from "@/components/News/types";
+import { ArticleData } from "@/Types/Article";
 import Layout from "@/components/Layout/Layout";
 import CustomHead from "@/components/Layout/CustomHead";
 

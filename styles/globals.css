@@ -2,30 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-    scroll-behavior: smooth;
-  }
+html {scroll-behavior: smooth}
 
-/* Scroll bar */
+body {overflow-x: hidden}
 
-::-webkit-scrollbar {
-    width: 8px;
-  }
+::-webkit-scrollbar {width: 8px}
   
-  ::-webkit-scrollbar-track {
-    background: white;
-  }
+::-webkit-scrollbar-track {background: white}
   
-  ::-webkit-scrollbar-thumb {
-    background: #38bdf8;
-    border-radius: 3px;
-  }
+::-webkit-scrollbar-thumb {background: #38bdf8; border-radius: 3px}
   
-  ::-webkit-scrollbar-thumb:hover {
-    background: #0ea5e9;
-  }
-
-  body {
-    overflow-x: hidden;
-  }
-  
+::-webkit-scrollbar-thumb:hover {background: #0ea5e9}

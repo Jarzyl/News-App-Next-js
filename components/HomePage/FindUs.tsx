@@ -1,11 +1,19 @@
 import { BsInstagram, BsFacebook, BsTwitter } from "react-icons/bs";
 
 const socialMediaLinks = [
-  { id: 1, href: "https://www.facebook.com/", icon: <BsFacebook size={25} /> },
+  { id: 1, 
+    href: "https://www.facebook.com/", 
+    icon: <BsFacebook size={25} /> },
   {
-    id: 2, href: "https://www.instagram.com/", icon: <BsInstagram size={25} /> },
+    id: 2,
+    href: "https://www.instagram.com/",
+    icon: <BsInstagram size={25} />,
+  },
   {
-    id: 3, href: "https://twitter.com/?lang=en", icon: <BsTwitter size={25} /> },
+    id: 3,
+    href: "https://twitter.com/?lang=en",
+    icon: <BsTwitter size={25} />,
+  },
 ];
 
 export default function FindUs() {

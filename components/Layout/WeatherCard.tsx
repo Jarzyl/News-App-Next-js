@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import { WeatherData } from "@/Types/WeatherData";
+import { toast } from "react-toastify";
 
 const WeatherCard: React.FC = () => {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
@@ -28,13 +29,42 @@ const WeatherCard: React.FC = () => {
           setWeatherData(response.data);
           setLocation(response.data.name);
         } else {
-          throw new Error("Geolocation is not supported by this browser.");
+          toast.error(
+            <div className="flex justify-center">
+              <span className="text-red-500">
+                Geolocation is not supported by this browser.
+              </span>
+            </div>,
+            {
+              position: "top-center",
+              autoClose: 1500,
+              hideProgressBar: true,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            }
+          );
         }
       } catch (error) {
-        console.error("An error occurred while fetching weather data:", error);
+        toast.error(
+          <div className="flex justify-center">
+            <span className="text-red-500">
+              An error occurred while fetching weather data.
+            </span>
+          </div>,
+          {
+            position: "top-center",
+            autoClose: 1500,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          }
+        );
       }
     };
-
     getLocation();
   }, []);
 
@@ -45,7 +75,7 @@ const WeatherCard: React.FC = () => {
           <>
             <div className="flex">
               <Link href="/WeatherPage" className="flex mt-3">
-                <HiOutlineExternalLink size={25} />
+                <HiOutlineExternalLink size={25} className="text-sky-600" />
                 <p className="font-semibold">Full forecast</p>
               </Link>
               <Image
@@ -67,6 +97,6 @@ const WeatherCard: React.FC = () => {
       </div>
     </div>
   );
-};
+}
 
 export default WeatherCard;

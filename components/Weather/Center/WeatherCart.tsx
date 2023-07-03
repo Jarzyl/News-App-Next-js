@@ -11,7 +11,7 @@ interface Props {
 
 const WeatherCart: React.FC<Props> = ({ data }) => {
   return (
-    <div className="flex flex-col justify-between max-w-[600px] w-full h-full m-auto mb-6">
+    <div className="flex flex-col justify-between max-w-[600px] w-full h-full m-auto mb-4">
       <div className="grid md:grid-cols-2 gap-3 justify-center md:justify-between mx-auto ">
         <WeatherInfo
           weatherIcon={BsWind}

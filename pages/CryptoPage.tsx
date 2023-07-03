@@ -5,21 +5,10 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Layout from "@/components/Layout/Layout";
 import CustomHead from "@/components/Layout/CustomHead";
-
-interface Coin {
-  id: string;
-  name: string;
-  image: string;
-  symbol: string;
-  current_price: number;
-  price_change_percentage_24h: number;
-  total_volume: number;
-  market_cap: number;
-  market_cap_rank: number;
-}
+import { Crypto } from "@/Types/Crypto";
 
 const CryptoPage: React.FC = () => {
-  const [coins, setCoins] = useState<Coin[]>([]);
+  const [coins, setCoins] = useState<Crypto[]>([]);
 
   useEffect(() => {
     const fetchCryptoData = async () => {
@@ -64,11 +53,11 @@ const CryptoPage: React.FC = () => {
           </h2>
           <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4 items-center justify-center md:ml-24 md:mr-24 lg:ml-36 lg:mr-36 mb-10 lg:mb-16">
             {coins.length === 0 ? (
-              <p className="text-red-500 text-3xl">
-                Problem with fetching data from the API
+              <p className="text-black text-3xl">
+                Loading data...
               </p>
             ) : (
-              coins.map((coin) => <CoinItem key={coin.name} coin={coin} />)
+              coins.map((data) => <CoinItem key={data.name} data={data} />)
             )}
           </div>
         </div>
